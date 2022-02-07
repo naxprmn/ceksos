@@ -1,5 +1,5 @@
 import 'package:ceksos/component/appbar.dart';
-import 'package:ceksos/formverif.dart';
+import 'package:ceksos/component/formverif.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

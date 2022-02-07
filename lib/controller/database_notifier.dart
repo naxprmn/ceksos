@@ -1,6 +1,6 @@
 import 'package:ceksos/models/model_capil.dart';
 import 'package:ceksos/models/model_filter.dart';
-import 'package:ceksos/models/model_pencarian.dart';
+import 'package:ceksos/models/model_hasil_pencarian.dart';
 
 import 'database_connection.dart';
 
