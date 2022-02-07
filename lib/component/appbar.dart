@@ -14,47 +14,47 @@ class AppbarTop extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Row(
-          children: [
-            const Text(title),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      'Discover',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                  SizedBox(width: width / 20),
-                  InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      'Contact Us',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            InkWell(
-              onTap: () {},
-              child: const Text(
-                'Sign Up',
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            SizedBox(
-              width: width / 50,
-            ),
-            InkWell(
-              onTap: () {},
-              child: const Text(
-                'Login',
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
+          children: const [
+            Text(title),
+            // Expanded(
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       InkWell(
+            //         onTap: () {},
+            //         child: const Text(
+            //           'Discover',
+            //           style: TextStyle(color: Colors.black),
+            //         ),
+            //       ),
+            //       SizedBox(width: width / 20),
+            //       InkWell(
+            //         onTap: () {},
+            //         child: const Text(
+            //           'Contact Us',
+            //           style: TextStyle(color: Colors.black),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // InkWell(
+            //   onTap: () {},
+            //   child: const Text(
+            //     'Sign Up',
+            //     style: TextStyle(color: Colors.black),
+            //   ),
+            // ),
+            // SizedBox(
+            //   width: width / 50,
+            // ),
+            // InkWell(
+            //   onTap: () {},
+            //   child: const Text(
+            //     'Login',
+            //     style: TextStyle(color: Colors.black),
+            //   ),
+            // ),
           ],
         ),
       ),

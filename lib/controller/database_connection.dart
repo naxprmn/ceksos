@@ -7,38 +7,54 @@ import 'package:supabase/supabase.dart';
 
 class DatabaseConnection {
   static Future readnik(String nik) async {
-    late ModelCapil a;
+    //query data dengan single query agar tidak menjadi list saat di fetch
+    //jika data lebih dari satu dan membutuhkan dalam bentuk list
+    //gunakan loop
+    //getting data form list []
+    //for (var i in response.data) {
+    //a = modelCapilFromMap(jsonEncode(i));
+    //return a;
+    //}
     final client = SupabaseClient(dbUrl, dbKey);
-    final response =
-        await client.from(tableCapil).select().eq('NIK', nik).execute();
+    final response = await client
+        .from(tableCapil)
+        .select()
+        .eq('NIK', nik)
+        .limit(1)
+        .single()
+        .execute();
     if (response.hasError) {
       return null;
-    }
-    //getting data form list []
-    for (var i in response.data) {
-      //convert data to model capil
-      a = modelCapilFromMap(jsonEncode(i));
-
-      return a;
+    } else {
+      ModelCapil model = ModelCapil.fromMap(response.data);
+      return model;
     }
   }
 
   static Future cekfilter(String kk) async {
     final client = SupabaseClient(dbUrl, dbKey);
-    final response =
-        await client.from(tablefilter).select().eq('NO_KK', kk).execute();
+    //query data dengan single query agar tidak menjadi list saat di fetch
+    //jika data lebih dari satu dan membutuhkan dalam bentuk list
+    //gunakan loop
+    //getting data form list []
+    //for (var i in response.data) {
+    //a = modelCapilFromMap(jsonEncode(i));
+    //return a;
+    //}
+    final response = await client
+        .from(tablefilter)
+        .select()
+        .eq('NO_KK', kk)
+        .limit(1)
+        .single()
+        .execute();
     if (response.hasError) {
       //return null value jika tidak mendapat bantuan
       return null;
     } else {
+      ModelFilter model = ModelFilter.fromMap(response.data);
       //return bantuan dalam model bantuan
-      ModelFilter a;
-      for (var i in response.data) {
-        //convert data to model capil
-        a = modelfilterFromMap(jsonEncode(i));
-
-        return a;
-      }
+      return model;
     }
   }
 

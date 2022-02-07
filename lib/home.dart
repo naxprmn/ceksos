@@ -52,8 +52,7 @@ class _HomePageState extends State<HomePage> {
                 fit: BoxFit.fitWidth,
               ),
             ),
-            Center(
-              heightFactor: 1,
+            SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.only(
                   top: screenSize.height * 0.30,

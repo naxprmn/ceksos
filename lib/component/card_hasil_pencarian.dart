@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class YourCardDetails extends StatelessWidget {
   final String cardTitle;
   final String cardSubTitle;
+  //getting data as Map
   final Map elm;
 
   const YourCardDetails(
@@ -32,14 +33,11 @@ class YourCardDetails extends StatelessWidget {
           ListView.builder(
             shrinkWrap: true,
             itemBuilder: (context, index) {
+              //build view from Map to listTile
               String key = elm.keys.elementAt(index);
-              return Column(
-                children: <Widget>[
-                  ListTile(
-                    title: Text(key),
-                    subtitle: Text("${elm[key]}"),
-                  ),
-                ],
+              return ListTile(
+                title: Text(key),
+                subtitle: Text("${elm[key]}"),
               );
             },
             itemCount: elm.length,

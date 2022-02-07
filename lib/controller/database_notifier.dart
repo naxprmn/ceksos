@@ -25,15 +25,15 @@ class DatabaseNotifier {
                 nama: capil.namaLengkap,
                 alamat: capil.alamat,
                 nik: capil.nik,
-                program: "-")
+                program: "Belum Terdaftar dalam program")
             .toMap();
       }
     } else {
       return ModelPencarian(
-              nik: "Tidak terdaftar di Di Capil Kota Magelang",
-              nama: "Tidak terdaftar di Di Capil Kota Magelang",
-              alamat: "Tidak terdaftar di Di Capil Kota Magelang",
-              program: "-")
+              nik: "Tidak terdaftar di Di Disdukcapil Kota Magelang",
+              nama: "Tidak terdaftar di Di Disdukcapil Kota Magelang",
+              alamat: "Tidak terdaftar di Di Disdukcapil Kota Magelang",
+              program: "Tidak terdaftar di Di Disdukcapil Kota Magelang")
           .toMap();
     }
   }

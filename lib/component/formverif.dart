@@ -50,14 +50,10 @@ class _FormWidgetState extends State<FormWidget> {
           const Divider(),
           model.isEmpty
               ? const Text("Masukan Data")
-              : Expanded(
-                  child: SingleChildScrollView(
-                    child: YourCardDetails(
-                      cardTitle: "Hasil Pencarian",
-                      cardSubTitle: "Data Capil",
-                      elm: model,
-                    ),
-                  ),
+              : YourCardDetails(
+                  cardTitle: "Hasil Pencarian",
+                  cardSubTitle: "Data Capil",
+                  elm: model,
                 )
         ],
       ),
