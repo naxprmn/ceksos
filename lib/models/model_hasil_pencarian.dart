@@ -3,20 +3,20 @@ class ModelHasilPencarian {
   String nama;
   String alamat;
   String? program;
-  String? dtks;
+  String? iddtks;
 
   ModelHasilPencarian(
       {required this.nik,
       required this.nama,
       required this.alamat,
       this.program,
-      this.dtks});
+      this.iddtks});
 
   Map<String, dynamic> toMap() => {
         "NIK": nik,
         "NAMA": nama,
         "ALAMAT": alamat,
         "PROGRAM": program,
-        "DTKS": dtks
+        "DTKS": iddtks
       };
 }

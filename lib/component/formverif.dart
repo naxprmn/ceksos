@@ -52,7 +52,7 @@ class _FormWidgetState extends State<FormWidget> {
               ? const Text("Masukan Data")
               : YourCardDetails(
                   cardTitle: "Hasil Pencarian",
-                  cardSubTitle: "Data Capil",
+                  cardSubTitle: periodeDtks,
                   elm: model,
                 )
         ],
@@ -62,11 +62,11 @@ class _FormWidgetState extends State<FormWidget> {
 
   submitButton() async {
     if (_keyFormNik.currentState!.validate()) {
-      var response = await DatabaseNotifier.sendHandlerNIK(nik.text);
-      if (response.isNotEmpty) {
+      var response = await DatabaseNotifier.cekdtks(nik.text);
+      if (response != null) {
         model = response;
         setState(() {});
-      }
+      } else {}
     }
   }
 }

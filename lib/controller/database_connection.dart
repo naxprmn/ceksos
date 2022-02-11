@@ -72,7 +72,7 @@ class DatabaseConnection {
     //return a;
     //}
     final response = await client
-        .from("dtks")
+        .from("3371")
         .select()
         .eq('NIK', nik)
         .limit(1)
@@ -82,10 +82,7 @@ class DatabaseConnection {
       String nullresponse = "Belum Terdaftar DTKS";
       //return null value jika tidak mendapat bantuan
       return ModelDtks(
-          nik: nullresponse,
-          nama: nullresponse,
-          nokk: nullresponse,
-          idDtks: nullresponse);
+          nik: nullresponse, nama: nullresponse, idDtks: nullresponse);
     } else {
       ModelDtks model = ModelDtks.fromMap(response.data);
       //return bantuan dalam model bantuan

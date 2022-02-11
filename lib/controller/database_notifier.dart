@@ -11,18 +11,23 @@ class DatabaseNotifier {
     var response = await DatabaseConnection.readnik(nik);
     ModelCapil capilResponse = response;
     //cek response filter
-    var ceknik = await DatabaseConnection.cekfilter(capilResponse.noKk);
+    var cekfilter = await DatabaseConnection.cekfilter(capilResponse.noKk);
     var cekdtks = await DatabaseConnection.cekdtks(capilResponse.nik);
     ModelDtks dtks = cekdtks;
-    ModelFilter filter = ceknik;
+    ModelFilter filter = cekfilter;
     //return hasil pencarian
     return ModelHasilPencarian(
             nama: capilResponse.namaLengkap,
             alamat: capilResponse.alamat,
             nik: capilResponse.nik,
-            dtks: dtks.idDtks,
+            iddtks: dtks.idDtks,
             program: filter.program)
         .toMap();
+  }
+
+  static Future cekdtks(nik) async {
+    ModelDtks response = await DatabaseConnection.cekdtks(nik);
+    return response.toMap();
   }
 
   static sendHandlerKK(String kk) async {
