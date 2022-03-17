@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:ceksos/models/modelhasilpencarian.dart';
 import 'package:ceksos/widget/cardhasilpencarian.dart';
 import 'package:ceksos/widget/cardpencarian.dart';
@@ -67,7 +65,6 @@ class _FormNIKState extends State<FormNIK> {
     FocusScope.of(context).unfocus();
     if (_keyFormNik.currentState!.validate()) {
       pencarian = await DatabaseNotifier.mulaiPencarianNIK(nik: nik.text);
-      print(pencarian);
       sudahcari = true;
       setState(() {});
     }

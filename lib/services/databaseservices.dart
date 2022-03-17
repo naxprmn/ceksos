@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ceksos/models/modelPKH.dart';
 import 'package:ceksos/models/modelbansos.dart';
 import 'package:ceksos/models/modelbpnt.dart';
@@ -52,8 +50,6 @@ class DatabaseServices {
     if (response.data == null) {
       return null;
     } else {
-      print(jsonEncode(response.data));
-
       ModelDtks model = ModelDtks.fromMap(response.data);
       //return bantuan dalam model bantuan
       return model;
@@ -70,7 +66,6 @@ class DatabaseServices {
         .single()
         .execute();
     if (response.data != null) {
-      print(jsonEncode(response.data));
       return ModelBansosPkh.fromJson(response.data);
     } else {
       return null;
@@ -87,7 +82,6 @@ class DatabaseServices {
         .single()
         .execute();
     if (response.data != null) {
-      print(jsonEncode(response.data));
       return ModelBansosBpnt.fromJson(response.data);
     } else {
       return null;
@@ -104,7 +98,6 @@ class DatabaseServices {
         .single()
         .execute();
     if (response.data != null) {
-      print(jsonEncode(response.data));
       return ModelBansosBpntPpkm.fromJson(response.data);
     } else {
       return null;
@@ -121,7 +114,6 @@ class DatabaseServices {
         .single()
         .execute();
     if (response.data != null) {
-      print(response.data);
       return ModelBansos.fromMap(response.data);
     } else {
       return null;
@@ -138,7 +130,6 @@ class DatabaseServices {
         .single()
         .execute();
     if (response.data != null) {
-      print(jsonEncode(response.data));
       return ModelPbiPemda.fromJson(response.data);
     } else {
       return null;
