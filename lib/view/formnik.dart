@@ -1,20 +1,23 @@
-import 'package:ceksos/component/card_hasil_pencarian.dart';
-import 'package:ceksos/component/card_pencarian.dart';
-import 'package:ceksos/controller/database_notifier.dart';
+import 'dart:async';
+
+import 'package:ceksos/models/modelhasilpencarian.dart';
+import 'package:ceksos/widget/cardhasilpencarian.dart';
+import 'package:ceksos/widget/cardpencarian.dart';
+import 'package:ceksos/controller/databasenotifier.dart';
 import 'package:ceksos/utils/name.dart';
 import 'package:flutter/material.dart';
 
-class FormWidget extends StatefulWidget {
-  const FormWidget({Key? key}) : super(key: key);
+class FormNIK extends StatefulWidget {
+  const FormNIK({Key? key}) : super(key: key);
 
   @override
-  _FormWidgetState createState() => _FormWidgetState();
+  _FormNIKState createState() => _FormNIKState();
 }
 
-class _FormWidgetState extends State<FormWidget> {
-  Map model = {};
+class _FormNIKState extends State<FormNIK> {
+  late ModelHasilPencarian pencarian;
+  bool sudahcari = false;
   final TextEditingController nik = TextEditingController();
-  final TextEditingController kk = TextEditingController();
   final _keyFormNik = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -48,12 +51,12 @@ class _FormWidgetState extends State<FormWidget> {
             ),
           ),
           const Divider(),
-          model.isEmpty
+          sudahcari == false
               ? const Text("Masukan Data")
               : YourCardDetails(
                   cardTitle: "Hasil Pencarian",
                   cardSubTitle: periodeDtks,
-                  elm: model,
+                  elm: pencarian,
                 )
         ],
       ),
@@ -61,12 +64,12 @@ class _FormWidgetState extends State<FormWidget> {
   }
 
   submitButton() async {
+    FocusScope.of(context).unfocus();
     if (_keyFormNik.currentState!.validate()) {
-      var response = await DatabaseNotifier.cekdtks(nik.text);
-      if (response != null) {
-        model = response;
-        setState(() {});
-      } else {}
+      pencarian = await DatabaseNotifier.mulaiPencarianNIK(nik: nik.text);
+      print(pencarian);
+      sudahcari = true;
+      setState(() {});
     }
   }
 }
