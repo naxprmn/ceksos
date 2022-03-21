@@ -1,4 +1,4 @@
-import 'package:ceksos/models/modelhasilpencarian.dart';
+import 'package:ceksos/models/hasilpencarian.dart';
 import 'package:flutter/material.dart';
 
 class YourCardDetails extends StatelessWidget {
@@ -85,8 +85,7 @@ class YourCardDetails extends StatelessWidget {
                     children: [
                       Text("NIK      : ${elm.pkh!.nik}"),
                       Text("NAMA     : ${elm.pkh!.nama}"),
-                      Text("ID DTKS  : ${elm.pkh!.idDtks}"),
-                      Text("PKH      : ${elm.pkh!.bansosPkh}"),
+                      const Text("PKH      : YA"),
                     ],
                   )
                 : const Text("-"),
@@ -130,7 +129,7 @@ class YourCardDetails extends StatelessWidget {
                     children: [
                       Text("NIK     :${elm.bansos!.nik}"),
                       Text("NAMA    :${elm.bansos!.nama}"),
-                      Text("SEBESAR  :${elm.bansos!.besarnyaBantuanSosialRp}")
+                      Text("BERUPA  :${elm.bansos!.besarnya}")
                     ],
                   )
                 : const Text("-"),
@@ -144,6 +143,22 @@ class YourCardDetails extends StatelessWidget {
                     children: [
                       Text("NO Kartu : ${elm.pbiPemda!.nomorKartu}"),
                       Text("Faskes   : ${elm.pbiPemda!.namaFaskes}"),
+                    ],
+                  )
+                : const Text("-"),
+          ),
+          ListTile(
+            title: const Text("KJS"),
+            subtitle: elm.kjs != null
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("NO            : ${elm.kjs!.no}"),
+                      Text("NIK           : ${elm.kjs!.nik}"),
+                      Text("NAMA          : ${elm.kjs!.nama}"),
+                      Text("ALAMAT        : ${elm.kjs!.alamat}"),
+                      Text("Nama Pasangan : ${elm.kjs!.namaPasangan}"),
                     ],
                   )
                 : const Text("-"),

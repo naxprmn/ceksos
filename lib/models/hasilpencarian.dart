@@ -3,6 +3,7 @@ import 'package:ceksos/models/modelbansos.dart';
 import 'package:ceksos/models/modelbpnt.dart';
 import 'package:ceksos/models/modelbpntppkm.dart';
 import 'package:ceksos/models/modeldtks.dart';
+import 'package:ceksos/models/modelkjs.dart';
 import 'package:ceksos/models/modelpbipemda.dart';
 
 class ModelHasilPencarian {
@@ -13,6 +14,7 @@ class ModelHasilPencarian {
   String? pekerjaan;
   ModelDtks? dtks;
   ModelBansos? bansos;
+  ModelKjs? kjs;
   ModelPbiPemda? pbiPemda;
   ModelBansosPkh? pkh;
   ModelBansosBpnt? bpnt;
@@ -26,6 +28,7 @@ class ModelHasilPencarian {
       this.pekerjaan,
       this.dtks,
       this.bansos,
+      this.kjs,
       this.pbiPemda,
       this.pkh,
       this.bpnt,
@@ -43,5 +46,6 @@ class ModelHasilPencarian {
         "BPNT-PPKM": bpntPpkm,
         "BANSOS APBD": bansos,
         "PBI APBD": pbiPemda,
+        "KJS": kjs
       };
 }

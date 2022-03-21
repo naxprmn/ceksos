@@ -1,4 +1,4 @@
-import 'package:ceksos/models/modelhasilpencarian.dart';
+import 'package:ceksos/models/hasilpencarian.dart';
 import 'package:ceksos/widget/cardpencarian.dart';
 import 'package:ceksos/controller/databasenotifier.dart';
 import 'package:ceksos/utils/name.dart';

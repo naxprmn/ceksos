@@ -5,22 +5,18 @@ import 'dart:convert';
 
 class ModelBansos {
   ModelBansos({
-    this.id,
     this.nik,
+    this.nokk,
     this.nama,
     this.alamat,
-    this.besarnyaBantuanSosialRp,
-    this.createdAt,
-    this.capil,
+    this.besarnya,
   });
 
-  int? id;
   String? nik;
+  String? nokk;
   String? nama;
   String? alamat;
-  String? besarnyaBantuanSosialRp;
-  DateTime? createdAt;
-  Capil? capil;
+  String? besarnya;
 
   factory ModelBansos.fromJson(String str) =>
       ModelBansos.fromMap(json.decode(str));
@@ -28,42 +24,18 @@ class ModelBansos {
   String toJson() => json.encode(toMap());
 
   factory ModelBansos.fromMap(Map<String, dynamic> json) => ModelBansos(
-        id: json["ID"],
         nik: json["NIK"],
+        nokk: json["NO_KK"],
         nama: json["NAMA"],
         alamat: json["ALAMAT"],
-        besarnyaBantuanSosialRp: json["BESARNYA BANTUAN SOSIAL (Rp)"],
-        createdAt: DateTime.parse(json["created_at"]),
-        capil: Capil.fromMap(json["CAPIL"]),
+        besarnya: json["BESARNYA"],
       );
 
   Map<String, dynamic> toMap() => {
-        "ID": id,
         "NIK": nik,
+        "NO KK": nokk,
         "NAMA": nama,
         "ALAMAT": alamat,
-        "BESARNYA BANTUAN SOSIAL (Rp)": besarnyaBantuanSosialRp,
-        "created_at": createdAt?.toIso8601String() ?? "",
-        "CAPIL": capil?.toMap() ?? "",
-      };
-}
-
-class Capil {
-  Capil({
-    this.noKk,
-  });
-
-  String? noKk;
-
-  factory Capil.fromJson(String str) => Capil.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Capil.fromMap(Map<String, dynamic> json) => Capil(
-        noKk: json["NO_KK"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "NO_KK": noKk,
+        "BESARNYA": besarnya,
       };
 }

@@ -68,6 +68,7 @@ class _HomePageState extends State<HomePage> {
                 fit: BoxFit.fitWidth,
               ),
             ),
+            // ignore: sized_box_for_whitespace
             Container(
               height: screenSize.height,
               width: screenSize.width,

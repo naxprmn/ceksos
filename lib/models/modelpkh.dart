@@ -9,15 +9,13 @@ class ModelBansosPkh {
     this.noKk,
     this.nik,
     this.nama,
-    this.idDtks,
-    this.bansosPkh,
+    this.alamat,
   });
 
   String? noKk;
   String? nik;
   String? nama;
-  String? idDtks;
-  String? bansosPkh;
+  String? alamat;
 
   factory ModelBansosPkh.fromRawJson(String str) =>
       ModelBansosPkh.fromJson(json.decode(str));
@@ -26,17 +24,15 @@ class ModelBansosPkh {
 
   factory ModelBansosPkh.fromJson(Map<String, dynamic> json) => ModelBansosPkh(
         noKk: json["NO_KK"],
-        idDtks: json["ID_DTKS"],
         nama: json["NAMA"],
         nik: json["NIK"],
-        bansosPkh: json["BANSOS_PKH"],
+        alamat: json["ALAMAT"],
       );
 
   Map<String, dynamic> toJson() => {
         "NO_KK": noKk,
         "NIK": nik,
         "NAMA": nama,
-        "ID_DTKS": idDtks,
-        "PKH": bansosPkh,
+        "ALAMAT": alamat,
       };
 }

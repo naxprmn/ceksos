@@ -1,4 +1,4 @@
-import 'package:ceksos/models/modelhasilpencarian.dart';
+import 'package:ceksos/models/hasilpencarian.dart';
 import 'package:ceksos/widget/cardhasilpencarian.dart';
 import 'package:ceksos/widget/cardpencarian.dart';
 import 'package:ceksos/controller/databasenotifier.dart';
@@ -55,7 +55,7 @@ class _FormNIKState extends State<FormNIK> {
                   cardTitle: "Hasil Pencarian",
                   cardSubTitle: periodeDtks,
                   elm: pencarian,
-                )
+                ),
         ],
       ),
     );

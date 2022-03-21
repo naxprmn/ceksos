@@ -4,6 +4,7 @@ import 'package:ceksos/models/modelbpnt.dart';
 import 'package:ceksos/models/modelbpntppkm.dart';
 import 'package:ceksos/models/modelcapil.dart';
 import 'package:ceksos/models/modeldtks.dart';
+import 'package:ceksos/models/modelkjs.dart';
 import 'package:ceksos/models/modelpbipemda.dart';
 import 'package:ceksos/utils/key.dart';
 import 'package:supabase/supabase.dart';
@@ -108,9 +109,9 @@ class DatabaseServices {
     final client = SupabaseClient(dbUrl, dbKey);
 
     final response = await client
-        .from("BANSOS")
-        .select('*, CAPIL!inner(NO_KK)')
-        .eq("CAPIL.NO_KK", kk)
+        .from("BANSOSAPBD")
+        .select()
+        .eq("NO_KK", kk)
         .single()
         .execute();
     if (response.data != null) {
@@ -131,6 +132,22 @@ class DatabaseServices {
         .execute();
     if (response.data != null) {
       return ModelPbiPemda.fromJson(response.data);
+    } else {
+      return null;
+    }
+  }
+
+  static Future<ModelKjs?> cekKjs({required String kk}) async {
+    final client = SupabaseClient(dbUrl, dbKey);
+
+    final response = await client
+        .from("BANSOSKJS")
+        .select()
+        .eq("NO_KK", kk)
+        .single()
+        .execute();
+    if (response.data != null) {
+      return ModelKjs.fromJson(response.data);
     } else {
       return null;
     }
