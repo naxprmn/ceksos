@@ -1,15 +1,14 @@
-import 'package:ceksos/view/formkk.dart';
-import 'package:ceksos/view/formnik.dart';
+import 'package:ceksos/presentation/formnik.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   double _opacity = 0;
   late ScrollController _scrollController;
   double _scrollPosition = 0;
@@ -28,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   //display pages list
-  final pages = [const FormNIK(), const FormKK()];
+  final pages = [const FormNIK()];
   //background color list
   final backgroundcolorswitch = [Colors.blue.shade200, Colors.green.shade200];
 
@@ -44,9 +43,7 @@ class _HomePageState extends State<HomePage> {
     //define screensize
     Size screenSize = MediaQuery.of(context).size;
 
-    _opacity = _scrollPosition < screenSize.height * 0.40
-        ? _scrollPosition / (screenSize.height * 0.40)
-        : 1;
+    _opacity = _scrollPosition < screenSize.height * 0.40 ? _scrollPosition / (screenSize.height * 0.40) : 1;
     //routing
 
     return Scaffold(
@@ -107,16 +104,6 @@ class _HomePageState extends State<HomePage> {
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
-                  // SizedBox(width: width / 20),
-                  // InkWell(
-                  //   onTap: () {
-                  //     _pageListener(1);
-                  //   },
-                  //   child: const Text(
-                  //     'CEK KK',
-                  //     style: TextStyle(color: Colors.black),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
