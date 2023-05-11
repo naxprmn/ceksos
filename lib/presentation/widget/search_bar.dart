@@ -1,11 +1,11 @@
 import 'package:ceksos/constant/app_constant.dart';
-import 'package:ceksos/presentation/widget/cardpencarian.dart';
+import 'package:ceksos/presentation/widget/pencarian_card.dart';
 import 'package:ceksos/provider/global_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FormNIK extends ConsumerWidget {
-  const FormNIK({Key? key}) : super(key: key);
+class SearchBar extends ConsumerWidget {
+  const SearchBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
@@ -18,7 +18,7 @@ class FormNIK extends ConsumerWidget {
         children: [
           Form(
             key: keyFormNik,
-            child: YourCardWidget(
+            child: PencarianCard(
               cardTitle: AppConstant.titlePencarianByNIK,
               cardSubTitle: AppConstant.subTitlePencarianByNIK,
               widgetUtama: TextFormField(
@@ -31,18 +31,21 @@ class FormNIK extends ConsumerWidget {
                   return null;
                 },
                 onFieldSubmitted: (value) {
-                  controller.getBantuan(value);
+                  if (keyFormNik.currentState!.validate()) {
+                    controller.getBantuan(value);
+                  }
                 },
               ),
               widgetButton: ElevatedButton(
                 onPressed: () async {
-                  controller.getBantuan(nik.text);
+                  if (keyFormNik.currentState!.validate()) {
+                    controller.getBantuan(nik.text);
+                  }
                 },
                 child: const Text(AppConstant.buttonSearch),
               ),
             ),
           ),
-          const Divider(),
         ],
       ),
     );

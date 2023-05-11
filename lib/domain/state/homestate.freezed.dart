@@ -21,7 +21,7 @@ mixin _$Homestate {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String error) error,
-    required TResult Function(BantuanModel data) data,
+    required TResult Function(List<BantuanModel> data) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$Homestate {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String error)? error,
-    TResult? Function(BantuanModel data)? data,
+    TResult? Function(List<BantuanModel> data)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$Homestate {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String error)? error,
-    TResult Function(BantuanModel data)? data,
+    TResult Function(List<BantuanModel> data)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +126,7 @@ class _$_HomestateInitial implements _HomestateInitial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String error) error,
-    required TResult Function(BantuanModel data) data,
+    required TResult Function(List<BantuanModel> data) data,
   }) {
     return initial();
   }
@@ -137,7 +137,7 @@ class _$_HomestateInitial implements _HomestateInitial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String error)? error,
-    TResult? Function(BantuanModel data)? data,
+    TResult? Function(List<BantuanModel> data)? data,
   }) {
     return initial?.call();
   }
@@ -148,7 +148,7 @@ class _$_HomestateInitial implements _HomestateInitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String error)? error,
-    TResult Function(BantuanModel data)? data,
+    TResult Function(List<BantuanModel> data)? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -240,7 +240,7 @@ class _$_HomestateLoading implements _HomestateLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String error) error,
-    required TResult Function(BantuanModel data) data,
+    required TResult Function(List<BantuanModel> data) data,
   }) {
     return loading();
   }
@@ -251,7 +251,7 @@ class _$_HomestateLoading implements _HomestateLoading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String error)? error,
-    TResult? Function(BantuanModel data)? data,
+    TResult? Function(List<BantuanModel> data)? data,
   }) {
     return loading?.call();
   }
@@ -262,7 +262,7 @@ class _$_HomestateLoading implements _HomestateLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String error)? error,
-    TResult Function(BantuanModel data)? data,
+    TResult Function(List<BantuanModel> data)? data,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -380,7 +380,7 @@ class _$_HomestateError implements _HomestateError {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String error) error,
-    required TResult Function(BantuanModel data) data,
+    required TResult Function(List<BantuanModel> data) data,
   }) {
     return error(this.error);
   }
@@ -391,7 +391,7 @@ class _$_HomestateError implements _HomestateError {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String error)? error,
-    TResult? Function(BantuanModel data)? data,
+    TResult? Function(List<BantuanModel> data)? data,
   }) {
     return error?.call(this.error);
   }
@@ -402,7 +402,7 @@ class _$_HomestateError implements _HomestateError {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String error)? error,
-    TResult Function(BantuanModel data)? data,
+    TResult Function(List<BantuanModel> data)? data,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -464,9 +464,7 @@ abstract class _$$_HomestateDataCopyWith<$Res> {
           _$_HomestateData value, $Res Function(_$_HomestateData) then) =
       __$$_HomestateDataCopyWithImpl<$Res>;
   @useResult
-  $Res call({BantuanModel data});
-
-  $BantuanModelCopyWith<$Res> get data;
+  $Res call({List<BantuanModel> data});
 }
 
 /// @nodoc
@@ -484,28 +482,25 @@ class __$$_HomestateDataCopyWithImpl<$Res>
   }) {
     return _then(_$_HomestateData(
       null == data
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as BantuanModel,
+              as List<BantuanModel>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BantuanModelCopyWith<$Res> get data {
-    return $BantuanModelCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$_HomestateData implements _HomestateData {
-  _$_HomestateData(this.data);
+  _$_HomestateData(final List<BantuanModel> data) : _data = data;
 
+  final List<BantuanModel> _data;
   @override
-  final BantuanModel data;
+  List<BantuanModel> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -517,11 +512,12 @@ class _$_HomestateData implements _HomestateData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_HomestateData &&
-            (identical(other.data, data) || other.data == data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -535,7 +531,7 @@ class _$_HomestateData implements _HomestateData {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String error) error,
-    required TResult Function(BantuanModel data) data,
+    required TResult Function(List<BantuanModel> data) data,
   }) {
     return data(this.data);
   }
@@ -546,7 +542,7 @@ class _$_HomestateData implements _HomestateData {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String error)? error,
-    TResult? Function(BantuanModel data)? data,
+    TResult? Function(List<BantuanModel> data)? data,
   }) {
     return data?.call(this.data);
   }
@@ -557,7 +553,7 @@ class _$_HomestateData implements _HomestateData {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String error)? error,
-    TResult Function(BantuanModel data)? data,
+    TResult Function(List<BantuanModel> data)? data,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -605,9 +601,9 @@ class _$_HomestateData implements _HomestateData {
 }
 
 abstract class _HomestateData implements Homestate {
-  factory _HomestateData(final BantuanModel data) = _$_HomestateData;
+  factory _HomestateData(final List<BantuanModel> data) = _$_HomestateData;
 
-  BantuanModel get data;
+  List<BantuanModel> get data;
   @JsonKey(ignore: true)
   _$$_HomestateDataCopyWith<_$_HomestateData> get copyWith =>
       throw _privateConstructorUsedError;

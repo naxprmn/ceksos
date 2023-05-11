@@ -22,7 +22,9 @@ BantuanModel _$BantuanModelFromJson(Map<String, dynamic> json) {
 mixin _$BantuanModel {
   String get id => throw _privateConstructorUsedError;
   String get nama => throw _privateConstructorUsedError;
+  String get nik => throw _privateConstructorUsedError;
   String get bantuan => throw _privateConstructorUsedError;
+  String? get alamat => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,8 @@ abstract class $BantuanModelCopyWith<$Res> {
           BantuanModel value, $Res Function(BantuanModel) then) =
       _$BantuanModelCopyWithImpl<$Res, BantuanModel>;
   @useResult
-  $Res call({String id, String nama, String bantuan});
+  $Res call(
+      {String id, String nama, String nik, String bantuan, String? alamat});
 }
 
 /// @nodoc
@@ -54,7 +57,9 @@ class _$BantuanModelCopyWithImpl<$Res, $Val extends BantuanModel>
   $Res call({
     Object? id = null,
     Object? nama = null,
+    Object? nik = null,
     Object? bantuan = null,
+    Object? alamat = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -65,10 +70,18 @@ class _$BantuanModelCopyWithImpl<$Res, $Val extends BantuanModel>
           ? _value.nama
           : nama // ignore: cast_nullable_to_non_nullable
               as String,
+      nik: null == nik
+          ? _value.nik
+          : nik // ignore: cast_nullable_to_non_nullable
+              as String,
       bantuan: null == bantuan
           ? _value.bantuan
           : bantuan // ignore: cast_nullable_to_non_nullable
               as String,
+      alamat: freezed == alamat
+          ? _value.alamat
+          : alamat // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -81,7 +94,8 @@ abstract class _$$_BantuanModelCopyWith<$Res>
       __$$_BantuanModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String nama, String bantuan});
+  $Res call(
+      {String id, String nama, String nik, String bantuan, String? alamat});
 }
 
 /// @nodoc
@@ -97,7 +111,9 @@ class __$$_BantuanModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? nama = null,
+    Object? nik = null,
     Object? bantuan = null,
+    Object? alamat = freezed,
   }) {
     return _then(_$_BantuanModel(
       id: null == id
@@ -108,10 +124,18 @@ class __$$_BantuanModelCopyWithImpl<$Res>
           ? _value.nama
           : nama // ignore: cast_nullable_to_non_nullable
               as String,
+      nik: null == nik
+          ? _value.nik
+          : nik // ignore: cast_nullable_to_non_nullable
+              as String,
       bantuan: null == bantuan
           ? _value.bantuan
           : bantuan // ignore: cast_nullable_to_non_nullable
               as String,
+      alamat: freezed == alamat
+          ? _value.alamat
+          : alamat // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -120,7 +144,11 @@ class __$$_BantuanModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BantuanModel implements _BantuanModel {
   _$_BantuanModel(
-      {required this.id, required this.nama, required this.bantuan});
+      {required this.id,
+      required this.nama,
+      required this.nik,
+      required this.bantuan,
+      this.alamat});
 
   factory _$_BantuanModel.fromJson(Map<String, dynamic> json) =>
       _$$_BantuanModelFromJson(json);
@@ -130,11 +158,15 @@ class _$_BantuanModel implements _BantuanModel {
   @override
   final String nama;
   @override
+  final String nik;
+  @override
   final String bantuan;
+  @override
+  final String? alamat;
 
   @override
   String toString() {
-    return 'BantuanModel(id: $id, nama: $nama, bantuan: $bantuan)';
+    return 'BantuanModel(id: $id, nama: $nama, nik: $nik, bantuan: $bantuan, alamat: $alamat)';
   }
 
   @override
@@ -144,12 +176,14 @@ class _$_BantuanModel implements _BantuanModel {
             other is _$_BantuanModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nama, nama) || other.nama == nama) &&
-            (identical(other.bantuan, bantuan) || other.bantuan == bantuan));
+            (identical(other.nik, nik) || other.nik == nik) &&
+            (identical(other.bantuan, bantuan) || other.bantuan == bantuan) &&
+            (identical(other.alamat, alamat) || other.alamat == alamat));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, nama, bantuan);
+  int get hashCode => Object.hash(runtimeType, id, nama, nik, bantuan, alamat);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +203,9 @@ abstract class _BantuanModel implements BantuanModel {
   factory _BantuanModel(
       {required final String id,
       required final String nama,
-      required final String bantuan}) = _$_BantuanModel;
+      required final String nik,
+      required final String bantuan,
+      final String? alamat}) = _$_BantuanModel;
 
   factory _BantuanModel.fromJson(Map<String, dynamic> json) =
       _$_BantuanModel.fromJson;
@@ -179,7 +215,11 @@ abstract class _BantuanModel implements BantuanModel {
   @override
   String get nama;
   @override
+  String get nik;
+  @override
   String get bantuan;
+  @override
+  String? get alamat;
   @override
   @JsonKey(ignore: true)
   _$$_BantuanModelCopyWith<_$_BantuanModel> get copyWith =>

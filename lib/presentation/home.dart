@@ -1,60 +1,35 @@
-import 'package:ceksos/presentation/formnik.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:ceksos/domain/state/homestate.dart';
+import 'package:ceksos/presentation/widget/hasil_card.dart';
+import 'package:ceksos/presentation/widget/search_bar.dart';
+import 'package:ceksos/provider/global_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  HomePageState createState() => HomePageState();
-}
-
-class HomePageState extends State<HomePage> {
-  double _opacity = 0;
-  late ScrollController _scrollController;
-  double _scrollPosition = 0;
-  int pageIndex = 0;
-
-  _scrollListener() {
-    setState(() {
-      _scrollPosition = _scrollController.position.pixels;
+  Widget build(BuildContext context, ref) {
+    ref.listen<Homestate>(homeController, (previous, next) {
+      next.whenOrNull(
+        loading: () {
+          SnackBar snack = const SnackBar(content: Text('Memuat...'));
+          ScaffoldMessenger.of(context).showSnackBar(snack);
+        },
+        error: (error) => AwesomeDialog(
+          context: context,
+          dialogType: DialogType.error,
+          body: Text(error),
+          btnOkOnPress: () {},
+        ).show(),
+      );
     });
-  }
-
-  _pageListener(int newIndex) {
-    setState(() {
-      pageIndex = newIndex;
-    });
-  }
-
-  //display pages list
-  final pages = [const FormNIK()];
-  //background color list
-  final backgroundcolorswitch = [Colors.blue.shade200, Colors.green.shade200];
-
-  @override
-  void initState() {
-    _scrollController = ScrollController();
-    _scrollController.addListener(_scrollListener);
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     //define screensize
     Size screenSize = MediaQuery.of(context).size;
-
-    _opacity = _scrollPosition < screenSize.height * 0.40 ? _scrollPosition / (screenSize.height * 0.40) : 1;
-    //routing
-
     return Scaffold(
-        backgroundColor: backgroundcolorswitch[pageIndex],
+        backgroundColor: Colors.blue.shade200,
         extendBodyBehindAppBar: true,
-        appBar: PreferredSize(
-            child: appbar(
-              screenSize.width,
-              _opacity,
-            ),
-            preferredSize: Size(screenSize.width, 1000)),
         body: Stack(
           children: [
             SizedBox(
@@ -66,50 +41,27 @@ class HomePageState extends State<HomePage> {
               ),
             ),
             // ignore: sized_box_for_whitespace
-            Container(
-              height: screenSize.height,
-              width: screenSize.width,
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    top: screenSize.height * 0.05,
-                    left: screenSize.width / 50,
-                    right: screenSize.width / 50,
-                  ),
-                  child: pages[pageIndex],
-                ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: screenSize.height * 0.05,
+                left: screenSize.width / 50,
+                right: screenSize.width / 50,
               ),
+              child: const SearchBar(),
             ),
+            Center(
+              child: SingleChildScrollView(
+                child: ref.watch(homeController).when(
+                      initial: () => const Text('Masukan NIK Terlebih Dahulu'),
+                      loading: () => const CircularProgressIndicator(),
+                      error: (error) => Text(error),
+                      data: (data) {
+                        return HasilCard(data: data);
+                      },
+                    ),
+              ),
+            )
           ],
         ));
-  }
-
-  appbar(double width, opacity) {
-    return Container(
-      color: Colors.transparent,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          children: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      _pageListener(0);
-                    },
-                    child: const Text(
-                      'CEK NIK',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

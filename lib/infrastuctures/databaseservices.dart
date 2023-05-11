@@ -5,8 +5,8 @@ class DatabaseServices {
   DatabaseServices({required this.client});
   final SupabaseClient client;
 
-  Future<PostgrestListResponse> getBantuan({required String id}) async {
-    PostgrestListResponse response = await client.from(DbConstant.dbPrimaryName).select().eq("id", id);
+  Future getBantuan({required String nik}) async {
+    final response = await client.from(DbConstant.dbPrimaryName).select().like("nik", nik);
     return response;
   }
 }

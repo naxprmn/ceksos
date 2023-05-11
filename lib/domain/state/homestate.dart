@@ -8,5 +8,5 @@ class Homestate with _$Homestate {
   factory Homestate.initial() = _HomestateInitial;
   factory Homestate.loading() = _HomestateLoading;
   factory Homestate.error(String error) = _HomestateError;
-  factory Homestate.data(BantuanModel data) = _HomestateData;
+  factory Homestate.data(List<BantuanModel> data) = _HomestateData;
 }

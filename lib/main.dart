@@ -12,10 +12,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Pandawarta',
+        title: 'Pandawarta - Panduan Data Warga Kota',
         theme: ThemeData(
           useMaterial3: true,
-          colorSchemeSeed: Colors.amber,
+          colorSchemeSeed: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: const HomePage());

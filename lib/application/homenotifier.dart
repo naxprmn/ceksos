@@ -1,3 +1,4 @@
+import 'package:ceksos/domain/model/bantuanmodel.dart';
 import 'package:ceksos/domain/state/homestate.dart';
 import 'package:ceksos/infrastuctures/databaseservices.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,7 +10,16 @@ class HomeNotifier extends StateNotifier<Homestate> {
   getBantuan(String nik) async {
     state = Homestate.loading();
     try {
-      final response = await service.getBantuan(id: nik);
+      List response = await service.getBantuan(nik: nik);
+      if (response.isNotEmpty) {
+        List<BantuanModel> responseList = [];
+        for (var element in response) {
+          responseList.add(BantuanModel.fromJson(element));
+        }
+        state = Homestate.data(responseList);
+      } else {
+        state = Homestate.error('Tidak Ditemukan');
+      }
     } catch (e) {
       state = Homestate.error(e.toString());
     }
