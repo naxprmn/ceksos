@@ -1,20 +1,22 @@
-import 'package:ceksos/view/home.dart';
+import 'package:ceksos/presentation/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MainApp extends StatelessWidget {
+  const MainApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Dinsos - Cek BANSOS',
+        title: 'Pandawarta - Panduan Data Warga Kota',
         theme: ThemeData(
+          useMaterial3: true,
+          colorSchemeSeed: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
-          primarySwatch: Colors.blue,
         ),
         home: const HomePage());
   }

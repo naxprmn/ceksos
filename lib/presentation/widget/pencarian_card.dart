@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class YourCardWidget extends StatelessWidget {
+class PencarianCard extends StatelessWidget {
   final String cardTitle;
   final String cardSubTitle;
   final Widget widgetUtama;
   final Widget widgetButton;
 
-  const YourCardWidget(
+  const PencarianCard(
       {Key? key,
       required this.cardTitle,
       required this.cardSubTitle,
